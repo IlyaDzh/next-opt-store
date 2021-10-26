@@ -1,8 +1,7 @@
-import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-const Home: NextPage = () => {
+const Payment: NextPage = () => {
     return (
         <div>
             <Head>
@@ -11,9 +10,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <h1>Главная страница</h1>
+            <h1>Оплата</h1>
         </div>
     );
 };
 
-export default Home;
+export default Payment;

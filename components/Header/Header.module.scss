@@ -1,0 +1,33 @@
+@import "styles/variables";
+
+.header {
+    .top {
+        height: 32px;
+        background: $grey-color;
+
+        &Links {
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            a+a {
+                margin-left: 16px;
+            }
+        }
+    }
+
+    .middle {
+        height: 104px;
+
+        &Content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .bottom {
+        background: $primary-color;
+    }
+}

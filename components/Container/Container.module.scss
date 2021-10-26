@@ -1,0 +1,17 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1196px;
+
+    @media #{$mobile} {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

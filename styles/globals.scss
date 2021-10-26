@@ -1,0 +1,28 @@
+@import "styles/fonts";
+@import "styles/variables";
+@import "styles/typography";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: $text-default;
+    font-family: $font-default;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+a {
+    color: $text-default;
+    text-decoration: none;
+    transition: color .3s;
+
+    &:hover {
+        color: $link-color-hover;
+    }
+}
