@@ -5,10 +5,19 @@
         height: 32px;
         background: $grey-color;
 
-        &Links {
+        .topbar {
             height: 100%;
             display: flex;
             align-items: center;
+
+
+            a {
+                color: $text-gray;
+
+                &:hover {
+                    color: $link-color-hover;
+                }
+            }
 
             a+a {
                 margin-left: 16px;
@@ -19,7 +28,7 @@
     .middle {
         height: 104px;
 
-        &Content {
+        .info {
             height: 100%;
             display: flex;
             align-items: center;
@@ -28,6 +37,41 @@
     }
 
     .bottom {
+        height: 54px;
         background: $primary-color;
+
+        .panel {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 42px;
+                padding: 0 14px;
+                color: $text-default;
+                font-weight: bold;
+                border-radius: 2px;
+                transition: background-color .2s;
+
+                &:hover {
+                    background-color: rgba(#fff, 0.5);
+                }
+            }
+
+            .categories,
+            .indicators {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .categories {
+                margin-right: 20px;
+            }
+        }
     }
 }
