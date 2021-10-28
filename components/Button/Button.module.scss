@@ -1,0 +1,115 @@
+.button {
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 500;
+    color: #3d464d;
+    fill: #3d464d;
+    transition: all .1s ease-in-out;
+
+    &:disabled {
+        cursor: default;
+        opacity: 0.65;
+    }
+
+    &.loading {
+        cursor: default;
+
+        .loader {
+            display: block;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &.default {
+        border-color: #f0f0f0;
+        background: #f0f0f0;
+
+        &:hover:not(:disabled):not(.loading) {
+            border-color: #3d464d;
+            background: #3d464d;
+            color: #fff;
+            fill: #fff;
+        }
+    }
+
+    &.contained {
+        border-color: #ffd333;
+        background: #ffd333;
+
+        &:hover:not(:disabled):not(.loading) {
+            border-color: #3d464d;
+            background: #3d464d;
+            color: #fff;
+            fill: #fff;
+        }
+    }
+
+    &.transparent {
+        border-color: transparent;
+        background: transparent;
+
+        &:hover:not(:disabled):not(.loading) {
+            border-color: #f0f0f0;
+            background: #f0f0f0;
+            color: #3d464d;
+            fill: #3d464d;
+        }
+    }
+
+    &.large {
+        height: 46px;
+        padding: 13px 32px;
+        font-size: 18px;
+
+        &.icon {
+            height: 46px;
+            width: 46px;
+        }
+    }
+
+    &.medium {
+        height: 38px;
+        padding: 6px 20px;
+        font-size: 16px;
+
+        &.icon {
+            height: 38px;
+            width: 38px;
+        }
+    }
+
+    &.small {
+        height: 32px;
+        padding: 6px 16px;
+        font-size: 14px;
+
+        &.icon {
+            height: 32px;
+            width: 32px;
+        }
+    }
+
+    &.icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        svg {
+            height: 16px;
+        }
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.fullHeight {
+        height: 100%;
+    }
+}

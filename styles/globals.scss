@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: $text-default;
     font-family: $font-default;
@@ -25,4 +29,30 @@ a {
     &:hover {
         color: $link-color-hover;
     }
+}
+
+a,
+span,
+div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea {
+    font-family: $font-default;
+    outline: none;
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="number"],
+input[type="submit"] {
+    -webkit-appearance: none;
+}
+
+ul {
+    list-style-type: none;
 }

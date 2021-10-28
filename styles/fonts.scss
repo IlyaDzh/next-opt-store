@@ -5,7 +5,7 @@
     src: local(''),
         url('/static/fonts/roboto-light.woff2') format('woff2'),
         url('/static/fonts/roboto-light.woff') format('woff');
-    font-dislay: swap;
+    font-display: swap;
 }
 
 @font-face {
@@ -15,7 +15,7 @@
     src: local(''),
         url('/static/fonts/roboto-regular.woff2') format('woff2'),
         url('/static/fonts/roboto-regular.woff') format('woff');
-    font-dislay: swap;
+    font-display: swap;
 }
 
 @font-face {
@@ -25,7 +25,7 @@
     src: local(''),
         url('/static/fonts/roboto-medium.woff2') format('woff2'),
         url('/static/fonts/roboto-medium.woff') format('woff');
-    font-dislay: swap;
+    font-display: swap;
 }
 
 @font-face {
@@ -35,5 +35,5 @@
     src: local(''),
         url('/static/fonts/roboto-bold.woff2') format('woff2'),
         url('/static/fonts/roboto-bold.woff') format('woff');
-    font-dislay: swap;
+    font-display: swap;
 }

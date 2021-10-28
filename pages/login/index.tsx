@@ -1,9 +1,7 @@
-import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
     return (
         <div>
             <Head>
@@ -12,11 +10,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <h1>Главная страница</h1>
-
-            <Link href="/_ui-kit">UiKit</Link>
+            <h1>Вход | Регистрация</h1>
         </div>
     );
 };
 
-export default Home;
+export default Login;
