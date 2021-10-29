@@ -3,7 +3,7 @@
 .header {
     .top {
         height: 32px;
-        background: $grey-color;
+        background: $header-top-background;
 
         .topbar {
             height: 100%;
@@ -12,10 +12,10 @@
             justify-content: space-between;
 
             a {
-                color: $text-gray;
+                color: $header-top-link;
 
                 &:hover {
-                    color: $link-color-hover;
+                    color: $link-hover;
                 }
             }
 
@@ -43,6 +43,12 @@
             &:hover {
                 color: $text-default;
             }
+        }
+
+        .search {
+            flex-grow: 1;
+            max-width: 550px;
+            margin: 0 5%;
         }
 
         .contact {
@@ -77,9 +83,10 @@
                 color: $text-default;
                 font-weight: bold;
                 border-radius: 2px;
+                transition: background-color 0.2s;
 
                 &:hover {
-                    background-color: rgba(#fff, 0.5);
+                    background-color: $header-panel-button-hover;
                 }
             }
 
@@ -111,7 +118,7 @@
                         padding: 0 5px;
                         border-radius: 100px;
                         background: #fff;
-                        color: #3d464d;
+                        color: $text-default;
                     }
                 }
             }

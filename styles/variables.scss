@@ -2,12 +2,61 @@ $font-default: "Roboto",
 "sans-serif";
 
 $text-default: #3d464d;
-$text-gray: #737373;
 
 $primary-color: #ffd333;
 
-$grey-color: #f7f7f7;
+
+// Links
+
+$link: #3d464d;
+$link-hover: #1a66ff;
 
 
-$link-color: #007bff;
-$link-color-hover: #1a66ff;
+// Buttons
+
+$button-text: #3d464d;
+
+$button-default: #f0f0f0;
+$button-default-hover: #3d464d;
+$button-default-text-hover: #fff;
+$button-default-active: #546069;
+
+$button-primary: #ffd333;
+$button-primary-hover: #3d464d;
+$button-primary-text-hover: #fff;
+$button-primary-active: #546069;
+
+$button-transparent: transparent;
+$button-transparent-hover: #f0f0f0;
+$button-transparent-text-hover: #3d464d;
+$button-transparent-active: #e5e5e5;
+
+
+// Fields
+
+$field-border: #e5e5e5;
+$field-text: #495057;
+
+$field-icon: #bfbfbf;
+$field-icon-hover: #ffd333;
+$field-icon-focus: #ffd333;
+
+$field-background: #fff;
+$field-background-disabled: #e9ecef;
+
+$field-border-hover: #d4d4d4;
+$field-border-active: #ffd333;
+
+
+// Loader
+
+$loader-background: rgba(#000, 0.1);
+$loader-main: rgba(#000, 0.5);
+
+
+// Header
+
+$header-top-background: #f7f7f7;
+$header-top-link: #737373;
+
+$header-panel-button-hover: rgba(#fff, 0.5);

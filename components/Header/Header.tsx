@@ -3,6 +3,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 import { Container } from "components/Container/Container";
+import { TextField } from "components/TextField/TextField";
 import { CATEGORIES } from "constants/categories";
 import { ERoute } from "enum/route";
 import { formatRoute } from "utils/formatRoute";
@@ -11,6 +12,7 @@ import styles from "components/Header/Header.module.scss";
 import HeartIcon from "public/static/icons/heart-outlined.svg";
 import CartIcon from "public/static/icons/cart-outlined.svg";
 import UserIcon from "public/static/icons/user-outlined.svg";
+import SearchIcon from "public/static/icons/search.svg";
 
 export const Header: React.FC = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -66,9 +68,16 @@ export const Header: React.FC = () => {
                 <Container>
                     <div className={styles.info}>
                         <Link href={ERoute.Main}>
-                            <a className={styles.logo}>LOGO</a>
+                            <a className={styles.logo}>SAKI.OPT</a>
                         </Link>
-                        <div>search</div>
+                        <div className={styles.search}>
+                            <TextField
+                                placeholder="Поиск товара по каталогу"
+                                icon={<SearchIcon width={20} height={20} />}
+                                onIconClick={() => alert("search...")}
+                                fullWidth
+                            />
+                        </div>
                         <div className={styles.contact}>
                             <h6 className={styles.title}>Связь с нами</h6>
                             <a href="tel:+79789999999" className="headline-5-font">

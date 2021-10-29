@@ -1,8 +1,10 @@
+@import "styles/variables";
+
 .loader {
     display: block;
     border-radius: 50%;
-    border: 2px solid rgba(#000, 0.1);
-    border-top-color: rgba(#000, 0.5);
+    border: 2px solid $loader-background;
+    border-top-color: $loader-main;
     transition: border-color 0.1s;
     animation-name: spin;
     animation-duration: 0.5s;

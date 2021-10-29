@@ -1,0 +1,76 @@
+@import "styles/variables";
+
+.field {
+    position: relative;
+    display: inline-flex;
+    border: 2px solid $field-border;
+    border-radius: 3px;
+
+    &:hover:not(.disabled) .border {
+        box-shadow: 0 0 0 2px $field-border-hover;
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.withIcon {
+        .input {
+            padding-right: 0;
+        }
+    }
+
+    .input {
+        display: block;
+        border: none;
+        width: 100%;
+        padding: 6px 12px;
+        background: $field-background;
+        color: $field-text;
+        font-size: 16px;
+        line-height: 20px;
+        height: 38px;
+
+        &:focus:not(:disabled)+.border {
+            box-shadow: 0 0 0 2px $field-border-active;
+        }
+
+        &:disabled {
+            background-color: $field-background-disabled;
+        }
+    }
+
+    .border {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1px;
+        transition: box-shadow 0.2s;
+    }
+
+    .icon {
+        border: none;
+        background: transparent;
+        min-width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fill: $field-icon;
+        transition: fill 0.2s;
+
+        &[type="button"] {
+            cursor: pointer;
+        }
+
+        &:hover {
+            fill: $field-icon-hover;
+        }
+
+        &:focus-visible {
+            fill: $field-icon-focus;
+        }
+    }
+}

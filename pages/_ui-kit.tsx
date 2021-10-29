@@ -4,8 +4,11 @@ import Head from "next/head";
 
 import { Container } from "components/Container/Container";
 import { Button } from "components/Button/Button";
+import { Loader } from "components/Loader/Loader";
+import { TextField } from "components/TextField/TextField";
 
 import HeartIcon from "public/static/icons/heart-outlined.svg";
+import SearchIcon from "public/static/icons/search.svg";
 
 const UiKit: NextPage = () => {
     return (
@@ -27,6 +30,21 @@ const UiKit: NextPage = () => {
                 }}
             >
                 <div>
+                    <Button size="large" variant="contained" fullWidth>
+                        Button Large
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="medium" variant="contained" fullWidth>
+                        Button Medium
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="small" variant="contained" fullWidth>
+                        Button Small
+                    </Button>
+                    <br />
+                    <br />
                     <Button size="large" variant="contained">
                         Button Large
                     </Button>
@@ -75,6 +93,30 @@ const UiKit: NextPage = () => {
                         size="large"
                         variant="contained"
                         icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="medium"
+                        variant="contained"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="small"
+                        variant="contained"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="large"
+                        variant="contained"
+                        icon={<HeartIcon />}
                         disabled
                     />
                     <br />
@@ -95,6 +137,21 @@ const UiKit: NextPage = () => {
                     />
                 </div>
                 <div>
+                    <Button size="large" variant="default" fullWidth>
+                        Button Large
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="medium" variant="default" fullWidth>
+                        Button Medium
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="small" variant="default" fullWidth>
+                        Button Small
+                    </Button>
+                    <br />
+                    <br />
                     <Button size="large" variant="default">
                         Button Large
                     </Button>
@@ -143,6 +200,30 @@ const UiKit: NextPage = () => {
                         size="large"
                         variant="default"
                         icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="medium"
+                        variant="default"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="small"
+                        variant="default"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="large"
+                        variant="default"
+                        icon={<HeartIcon />}
                         disabled
                     />
                     <br />
@@ -163,6 +244,21 @@ const UiKit: NextPage = () => {
                     />
                 </div>
                 <div>
+                    <Button size="large" variant="transparent" fullWidth>
+                        Button Large
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="medium" variant="transparent" fullWidth>
+                        Button Medium
+                    </Button>
+                    <br />
+                    <br />
+                    <Button size="small" variant="transparent" fullWidth>
+                        Button Small
+                    </Button>
+                    <br />
+                    <br />
                     <Button size="large" variant="transparent">
                         Button Large
                     </Button>
@@ -223,6 +319,30 @@ const UiKit: NextPage = () => {
                         size="large"
                         variant="transparent"
                         icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="medium"
+                        variant="transparent"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="small"
+                        variant="transparent"
+                        icon={<HeartIcon />}
+                        isLoading
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        size="large"
+                        variant="transparent"
+                        icon={<HeartIcon />}
                         disabled
                     />
                     <br />
@@ -241,6 +361,47 @@ const UiKit: NextPage = () => {
                         icon={<HeartIcon />}
                         disabled
                     />
+                </div>
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr 1fr",
+                        gridGap: 20,
+                        padding: 20
+                    }}
+                >
+                    <Loader size={80} />
+                    <Loader size={64} />
+                    <Loader size={48} />
+                    <Loader size={32} />
+                    <Loader size={24} />
+                    <Loader size={16} />
+                </div>
+                <div>
+                    <TextField
+                        placeholder="Placeholder"
+                        icon={<SearchIcon width={20} height={20} />}
+                        fullWidth
+                    />
+                    <br />
+                    <br />
+                    <TextField
+                        placeholder="Placeholder"
+                        icon={<SearchIcon width={20} height={20} />}
+                    />
+                    <br />
+                    <br />
+                    <TextField
+                        placeholder="Placeholder"
+                        icon={<SearchIcon width={20} height={20} />}
+                        onIconClick={() => alert("search...")}
+                    />
+                    <br />
+                    <br />
+                    <TextField placeholder="Placeholder" />
+                    <br />
+                    <br />
+                    <TextField placeholder="Placeholder" disabled />
                 </div>
             </div>
         </Container>

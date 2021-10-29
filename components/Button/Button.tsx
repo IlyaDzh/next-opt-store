@@ -48,7 +48,7 @@ export const Button: React.FC<ButtonProps> = ({
                 styles.button,
                 styles[variant],
                 styles[size],
-                fullWidth && styles.fullwidth,
+                fullWidth && styles.fullWidth,
                 fullHeight && styles.fullHeight,
                 isLoading && styles.loading,
                 icon && styles.icon,
@@ -57,13 +57,12 @@ export const Button: React.FC<ButtonProps> = ({
             {...(!isLoading && { onClick })}
             {...props}
         >
-            {isLoading ? (
+            {isLoading && (
                 <span className={styles.loader}>
                     <Loader size={LOADER_SIZES[size]} />
                 </span>
-            ) : (
-                icon || children
             )}
+            {icon || children}
         </button>
     );
 };

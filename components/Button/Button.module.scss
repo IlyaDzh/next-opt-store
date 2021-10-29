@@ -1,12 +1,14 @@
+@import "styles/variables";
+
 .button {
     cursor: pointer;
     border: none;
     border-radius: 2px;
     text-align: center;
     font-weight: 500;
-    color: #3d464d;
-    fill: #3d464d;
-    transition: all .1s ease-in-out;
+    color: $button-text;
+    fill: $button-text;
+    transition: all 0.15s ease-in-out;
 
     &:disabled {
         cursor: default;
@@ -15,49 +17,69 @@
 
     &.loading {
         cursor: default;
+        position: relative;
+        color: transparent;
+        fill: transparent;
 
         .loader {
-            display: block;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 
     &.default {
-        border-color: #f0f0f0;
-        background: #f0f0f0;
+        border-color: $button-default;
+        background: $button-default;
 
-        &:hover:not(:disabled):not(.loading) {
-            border-color: #3d464d;
-            background: #3d464d;
-            color: #fff;
-            fill: #fff;
+        &:hover:not(:disabled):not(.loading),
+        &:focus-visible:not(:disabled):not(.loading) {
+            border-color: $button-default-hover;
+            background: $button-default-hover;
+            color: $button-default-text-hover;
+            fill: $button-default-text-hover;
+        }
+
+        &:active:not(:disabled):not(.loading) {
+            border-color: $button-default-active;
+            background: $button-default-active;
         }
     }
 
     &.contained {
-        border-color: #ffd333;
-        background: #ffd333;
+        border-color: $button-primary;
+        background: $button-primary;
 
-        &:hover:not(:disabled):not(.loading) {
-            border-color: #3d464d;
-            background: #3d464d;
-            color: #fff;
-            fill: #fff;
+        &:hover:not(:disabled):not(.loading),
+        &:focus-visible:not(:disabled):not(.loading) {
+            border-color: $button-primary-hover;
+            background: $button-primary-hover;
+            color: $button-primary-text-hover;
+            fill: $button-primary-text-hover;
+        }
+
+        &:active:not(:disabled):not(.loading) {
+            border-color: $button-primary-active;
+            background: $button-primary-active;
         }
     }
 
     &.transparent {
-        border-color: transparent;
-        background: transparent;
+        border-color: $button-transparent;
+        background: $button-transparent;
 
-        &:hover:not(:disabled):not(.loading) {
-            border-color: #f0f0f0;
-            background: #f0f0f0;
-            color: #3d464d;
-            fill: #3d464d;
+        &:hover:not(:disabled):not(.loading),
+        &:focus-visible:not(:disabled):not(.loading) {
+            border-color: $button-transparent-hover;
+            background: $button-transparent-hover;
+            color: $button-transparent-text-hover;
+            fill: $button-transparent-text-hover;
+        }
+
+        &:active:not(:disabled):not(.loading) {
+            border-color: $button-transparent-active;
+            background: $button-transparent-active;
         }
     }
 
