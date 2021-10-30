@@ -29,7 +29,7 @@
         color: $field-text;
         font-size: 16px;
         line-height: 20px;
-        height: 38px;
+        height: 34px;
 
         &:focus:not(:disabled)+.border {
             box-shadow: 0 0 0 2px $field-border-active;
@@ -63,14 +63,14 @@
 
         &[type="button"] {
             cursor: pointer;
-        }
 
-        &:hover {
-            fill: $field-icon-hover;
-        }
+            &:hover {
+                fill: $field-icon-hover;
+            }
 
-        &:focus-visible {
-            fill: $field-icon-focus;
+            &:focus-visible {
+                fill: $field-icon-focus;
+            }
         }
     }
 }
