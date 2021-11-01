@@ -16,15 +16,19 @@ import WhatsAppIcon from "public/static/icons/socials/whatsapp.svg";
 import VkIcon from "public/static/icons/socials/vkontakte.svg";
 import InstagramIcon from "public/static/icons/socials/instagram.svg";
 
+import EnvelopeIcon from "public/static/icons/envelope-outlined.svg";
+import PhoneIcon from "public/static/icons/phone-outlined.svg";
+import ClockIcon from "public/static/icons/clock-outlined.svg";
+
 export const Footer: React.FC = () => {
     return (
         <footer className={styles.footer}>
             <Container>
-                <div className={styles.widgets}>
+                <div className={styles.content}>
+                    <Link href={ERoute.Main}>
+                        <a className={styles.logo}>SAKI.OPT</a>
+                    </Link>
                     <div className={styles.contacts}>
-                        <Link href={ERoute.Main}>
-                            <a className={styles.logo}>SAKI.OPT</a>
-                        </Link>
                         <p
                             className={clsx(
                                 styles.description,
@@ -36,6 +40,28 @@ export const Footer: React.FC = () => {
                             предлагается электроника, одежда, детские и медицинские
                             товары.
                         </p>
+                        <ul className={styles.list}>
+                            <li className={styles.item}>
+                                <span className={styles.icon}>
+                                    <EnvelopeIcon height={18} />
+                                </span>
+                                <a href="mailto:sakiopt@example.com">
+                                    sakiopt@example.com
+                                </a>
+                            </li>
+                            <li className={styles.item}>
+                                <span className={styles.icon}>
+                                    <PhoneIcon height={18} />
+                                </span>
+                                <a href="tel:+79789999999">+7 (978) 999-99-99</a>
+                            </li>
+                            <li className={styles.item}>
+                                <span className={styles.icon}>
+                                    <ClockIcon height={18} />
+                                </span>
+                                Пн-Вск 09:00 - 20:00
+                            </li>
+                        </ul>
                     </div>
                     <div className={styles.links}>
                         <ul>
@@ -86,10 +112,11 @@ export const Footer: React.FC = () => {
                                 Хотите быть в курсе всех акций и скидок? <br />
                                 Подпишитесь на наш канал в Telegram
                             </p>
-                            <div>
+                            <div className={styles.form}>
                                 <TextField
                                     defaultValue="https://t.me/sakiopt"
                                     readOnly
+                                    fullWidth
                                 />
                                 <Button
                                     className={styles.subscribe}
