@@ -11,7 +11,6 @@ const Item: NextPage = () => {
             <Head>
                 <title>Купить Товар {id}</title>
                 <meta name="description" content={`Купить Товар ${id} в Саках`} />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <h1>Товар {id}</h1>

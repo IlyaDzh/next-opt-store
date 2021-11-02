@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Loader } from "components/Loader/Loader";
-import styles from "components/Button/Button.module.scss";
+import { Loader } from "components/common/Loader/Loader";
+import styles from "components/common/Button/Button.module.scss";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "default" | "contained" | "transparent";

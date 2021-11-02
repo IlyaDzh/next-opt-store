@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import styles from "components/TextField/TextField.module.scss";
+import styles from "components/common/TextField/TextField.module.scss";
 
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
     fullWidth?: boolean;

@@ -1,17 +1,25 @@
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import { Container } from "components/layout/Container/Container";
+import { LoginCard } from "components/cards/LoginCard/LoginCard";
+import { RegisterCard } from "components/cards/RegisterCard/RegisterCard";
+import styles from "pages/login/style.module.scss";
+
 const Login: NextPage = () => {
     return (
-        <div>
+        <Container>
             <Head>
-                <title>Оптовый магазин Саки</title>
-                <meta name="description" content="Оптовый магазин Саки" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>Авторизация</title>
+                <meta name="description" content="Авторизация" />
             </Head>
 
-            <h1>Вход | Регистрация</h1>
-        </div>
+            <div className={styles.cards}>
+                <LoginCard />
+                <RegisterCard />
+            </div>
+        </Container>
     );
 };
 

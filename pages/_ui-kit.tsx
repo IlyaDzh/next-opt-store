@@ -2,10 +2,10 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { Container } from "components/Container/Container";
-import { Button } from "components/Button/Button";
-import { Loader } from "components/Loader/Loader";
-import { TextField } from "components/TextField/TextField";
+import { Container } from "components/layout/Container/Container";
+import { Button } from "components/common/Button/Button";
+import { Loader } from "components/common/Loader/Loader";
+import { TextField } from "components/common/TextField/TextField";
 
 import HeartIcon from "public/static/icons/heart-outlined.svg";
 import SearchIcon from "public/static/icons/search.svg";
@@ -16,7 +16,6 @@ const UiKit: NextPage = () => {
             <Head>
                 <title>UiKit</title>
                 <meta name="description" content="UiKit" />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <br />

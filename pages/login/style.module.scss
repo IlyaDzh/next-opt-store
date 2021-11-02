@@ -1,0 +1,15 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+
+    @media #{$mobile} {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-row-gap: 24px;
+    }
+}

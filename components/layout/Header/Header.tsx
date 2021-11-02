@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Container } from "components/Container/Container";
-import { TextField } from "components/TextField/TextField";
+import { Container } from "components/layout/Container/Container";
+import { TextField } from "components/common/TextField/TextField";
 import { CATEGORIES } from "constants/categories";
 import { ERoute } from "enum/route";
 import { formatRoute } from "utils/formatRoute";
-import styles from "components/Header/Header.module.scss";
+import styles from "components/layout/Header/Header.module.scss";
 
 import HeartIcon from "public/static/icons/heart-outlined.svg";
 import CartIcon from "public/static/icons/cart-outlined.svg";

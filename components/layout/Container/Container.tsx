@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import styles from "components/Container/Container.module.scss";
+import styles from "components/layout/Container/Container.module.scss";
 
 interface ContainerProps {
     wrapperClass?: string;

@@ -11,7 +11,6 @@ const Category: NextPage = () => {
             <Head>
                 <title>Купить {slug}</title>
                 <meta name="description" content={`Купить ${slug} в Саках`} />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <h1>{slug}</h1>

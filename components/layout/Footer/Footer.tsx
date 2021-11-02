@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Container } from "components/Container/Container";
-import { TextField } from "components/TextField/TextField";
-import { Button } from "components/Button/Button";
+import { Container } from "components/layout/Container/Container";
+import { TextField } from "components/common/TextField/TextField";
+import { Button } from "components/common/Button/Button";
 import { ERoute } from "enum/route";
 import { CATEGORIES } from "constants/categories";
 import { formatRoute } from "utils/formatRoute";
-import styles from "components/Footer/Footer.module.scss";
+import styles from "components/layout/Footer/Footer.module.scss";
 
 import TelegramIcon from "public/static/icons/socials/telegram.svg";
 import ViberIcon from "public/static/icons/socials/viber.svg";
