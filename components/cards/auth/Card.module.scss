@@ -1,0 +1,45 @@
+@import "styles/variables";
+@import "styles/breakpoints";
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border: 2px solid #f0f0f0;
+    border-radius: 2px;
+
+    @media #{$mobile} {
+        padding: 22px;
+    }
+
+    .title {
+        margin-bottom: 28px;
+
+        @media #{$mobile} {
+            margin-bottom: 24px;
+        }
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .content {
+            margin-bottom: 48px;
+
+            @media #{$mobile} {
+                margin-bottom: 32px;
+            }
+        }
+
+        .input {
+            margin-bottom: 24px;
+
+            @media #{$mobile} {
+                margin-bottom: 18px;
+            }
+        }
+    }
+}

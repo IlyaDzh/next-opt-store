@@ -5,6 +5,8 @@ import styles from "components/common/TextField/TextField.module.scss";
 
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
     fullWidth?: boolean;
+    labelText?: string;
+    labelFor?: string;
     icon?: React.ReactNode;
     wrapperClass?: string;
     onIconClick?: (e: any) => void;
@@ -12,6 +14,8 @@ export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputEleme
 
 export const TextField: React.FC<TextFieldProps> = ({
     fullWidth = false,
+    labelText,
+    labelFor,
     icon,
     onIconClick,
     wrapperClass,
@@ -24,12 +28,19 @@ export const TextField: React.FC<TextFieldProps> = ({
             className={clsx(
                 styles.field,
                 fullWidth && styles.fullWidth,
+                labelText && styles.withLabel,
                 icon && styles.withIcon,
                 disabled && styles.disabled,
                 wrapperClass
             )}
         >
+            {labelText && (
+                <label className={styles.label} htmlFor={labelFor}>
+                    {labelText}
+                </label>
+            )}
             <input
+                id={labelFor}
                 className={clsx(styles.input, className)}
                 type="text"
                 disabled={disabled}

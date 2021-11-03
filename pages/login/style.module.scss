@@ -9,7 +9,7 @@
 
     @media #{$mobile} {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: auto auto;
         grid-row-gap: 24px;
     }
 }

@@ -6,6 +6,7 @@ import { Container } from "components/layout/Container/Container";
 import { Button } from "components/common/Button/Button";
 import { Loader } from "components/common/Loader/Loader";
 import { TextField } from "components/common/TextField/TextField";
+import { Checkbox } from "components/common/Checkbox/Checkbox";
 
 import HeartIcon from "public/static/icons/heart-outlined.svg";
 import SearchIcon from "public/static/icons/search.svg";
@@ -401,6 +402,22 @@ const UiKit: NextPage = () => {
                     <br />
                     <br />
                     <TextField placeholder="Placeholder" disabled />
+                </div>
+                <div>
+                    <Checkbox>Label</Checkbox>
+                    <br />
+                    <br />
+                    <Checkbox defaultChecked>Label</Checkbox>
+                    <br />
+                    <br />
+                    <Checkbox disabled>Label</Checkbox>
+                    <br />
+                    <br />
+                    <Checkbox defaultChecked disabled>
+                        Label
+                    </Checkbox>
+                    <br />
+                    <br />
                 </div>
             </div>
         </Container>

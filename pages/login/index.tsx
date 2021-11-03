@@ -3,8 +3,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { Container } from "components/layout/Container/Container";
-import { LoginCard } from "components/cards/LoginCard/LoginCard";
-import { RegisterCard } from "components/cards/RegisterCard/RegisterCard";
+import { LoginCard } from "components/cards/auth/LoginCard/LoginCard";
+import { RegisterCard } from "components/cards/auth/RegisterCard/RegisterCard";
 import styles from "pages/login/style.module.scss";
 
 const Login: NextPage = () => {

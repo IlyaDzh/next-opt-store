@@ -20,6 +20,16 @@
         }
     }
 
+    &.withLabel {
+        margin-top: 28px;
+    }
+
+    .label {
+        display: block;
+        position: absolute;
+        top: -28px;
+    }
+
     .input {
         display: block;
         border: none;
