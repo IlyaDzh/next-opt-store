@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
+import { StoreProvider } from "stores/useStore";
 import "styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta name="description" content="Оптовый магазин Саки" />
             </Head>
 
-            <Component {...pageProps} />
+            <StoreProvider {...pageProps}>
+                <Component {...pageProps} />
+            </StoreProvider>
         </ContentLayout>
     );
 }
