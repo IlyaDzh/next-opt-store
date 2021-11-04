@@ -1,22 +1,28 @@
-import { makeAutoObservable } from "mobx";
 import { enableStaticRendering } from "mobx-react-lite";
 
-enableStaticRendering(typeof window === "undefined");
+import { ProductStore } from "stores/product/ProductStore";
+import { UIStore } from "stores/UIStore";
 
-export class RootStore {
-    light = false;
+const isServer = typeof window === "undefined";
 
-    constructor() {
-        makeAutoObservable(this);
+enableStaticRendering(isServer);
+
+let store = null;
+
+export default function initializeStore(initialData = { productStore: {} }) {
+    if (isServer) {
+        return {
+            productStore: new ProductStore(initialData.productStore),
+            uiStore: new UIStore()
+        };
     }
 
-    toggleMode = () => {
-        this.light = !this.light;
-    };
+    if (store === null) {
+        store = {
+            productStore: new ProductStore(initialData.productStore),
+            uiStore: new UIStore()
+        };
+    }
 
-    hydrate = (data: any) => {
-        if (!data) return;
-
-        this.light = data.light;
-    };
+    return store;
 }
