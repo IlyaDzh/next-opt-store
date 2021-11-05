@@ -3,12 +3,12 @@ import type { NextPage } from "next";
 import { useStore } from "stores/useStore";
 
 const Shipping: NextPage = () => {
-    const store = useStore();
+    const { isLoading } = useStore();
 
     return (
         <div>
             <h1>Доставка</h1>
-            <p>{store.light ? "true" : "false"}</p>
+            <p>{isLoading ? "true" : "false"}</p>
         </div>
     );
 };

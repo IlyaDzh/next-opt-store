@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { NextPage, NextPageContext } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -17,5 +17,13 @@ const Item: NextPage = () => {
         </div>
     );
 };
+
+// Item.getInitialProps = async ({ store }: NextPageContext) => {
+//     console.log(store);
+
+//     return {
+//         props: {}
+//     };
+// };
 
 export default Item;

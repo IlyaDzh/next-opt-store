@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { RootStore } from "stores";
 
 interface IProduct {
     title: string;
@@ -8,8 +8,10 @@ interface IProduct {
 export class ProductStore {
     product: IProduct | undefined;
 
-    constructor(initialData: any = {}) {
-        this.product = initialData.product;
+    root: RootStore;
+
+    constructor(root: RootStore) {
+        this.root = root;
     }
 
     fetchProduct = async (id: string): Promise<void> => {

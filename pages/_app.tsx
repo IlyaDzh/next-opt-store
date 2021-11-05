@@ -1,80 +1,58 @@
-// import React from "react";
-// import type { AppProps } from "next/app";
-// import Head from "next/head";
-
-// import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
-// import { StoreProvider } from "stores/useStore";
-// import "styles/globals.scss";
-
-// function MyApp({ Component, pageProps }: AppProps) {
-//     return (
-//         <ContentLayout>
-//             <Head>
-//                 <meta charSet="utf-8" />
-//                 <meta
-//                     name="viewport"
-//                     content="width=device-width, initial-scale=1.0"
-//                 />
-//                 <link rel="icon" href="/favicon.ico" />
-//                 <title>Оптовый магазин Саки</title>
-//                 <meta name="description" content="Оптовый магазин Саки" />
-//             </Head>
-
-//             <StoreProvider {...this.mobxStore}>
-//                 <Component {...pageProps} />
-//             </StoreProvider>
-//         </ContentLayout>
-//     );
-// }
-
-// export default MyApp;
-
-
-
-
-
-
 import React from "react";
-import App, { AppProps, Container } from "next/app";
-import { Provider } from "mobx-react";
+import App, { AppContext } from "next/app";
+import Head from "next/head";
 
-import initializeStore from "stores";
+import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
+import { StoreProvider } from "stores/useStore";
+import { fetchInitialStoreState, RootStore } from "stores";
+import "styles/globals.scss";
 
-class CustomApp extends App {
-    static async getInitialProps(appContext) {
-        const mobxStore = initializeStore();
+class MyApp extends App {
+    state = {
+        rootStore: new RootStore()
+    };
 
-        appContext.ctx.mobxStore = mobxStore;
-
+    // Fetching serialized(JSON) store state
+    static getInitialProps = async (appContext: AppContext) => {
+        // appContext.ctx.rootStore = this.state;
         const appProps = await App.getInitialProps(appContext);
+        const initialStoreState = await fetchInitialStoreState();
 
         return {
             ...appProps,
-            initialMobxState: mobxStore
+            initialStoreState
         };
-    }
+    };
 
-    constructor(props: AppProps) {
-        super(props);
+    // Hydrate serialized state to store
+    static getDerivedStateFromProps = (nextProps: any, prevState: any) => {
+        prevState.rootStore.hydrate(nextProps.initialStoreState);
 
-        const isServer = typeof window === "undefined";
-
-        this.mobxStore = isServer
-            ? props.initialMobxState
-            : initializeStore(props.initialMobxState);
-    }
+        return prevState;
+    };
 
     render() {
         const { Component, pageProps } = this.props;
 
         return (
-            <Provider {...this.mobxStore}>
-                <Container>
+            <ContentLayout>
+                <Head>
+                    <meta charSet="utf-8" />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0"
+                    />
+                    <link rel="icon" href="/favicon.ico" />
+                    <title>Оптовый магазин Саки</title>
+                    <meta name="description" content="Оптовый магазин Саки" />
+                </Head>
+
+                <StoreProvider store={this.state.rootStore}>
                     <Component {...pageProps} />
-                </Container>
-            </Provider>
+                </StoreProvider>
+            </ContentLayout>
         );
     }
 }
 
-export default CustomApp;
+export default MyApp;

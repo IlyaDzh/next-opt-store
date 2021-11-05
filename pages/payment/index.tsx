@@ -3,23 +3,21 @@ import type { NextPage } from "next";
 import { useStore } from "stores/useStore";
 
 const Payment: NextPage = () => {
-    const store = useStore()
-    
+    const { isLoading } = useStore();
+
     return (
         <div>
             <h1>Оплата</h1>
-            <p>{store.light ? "true" : "false"}</p>
+            <p>{isLoading ? "true" : "false"}</p>
         </div>
     );
 };
 
-export function getStaticProps() {
+export function getStaticProps(props: any) {
+    console.log(props.initialStoreState);
+
     return {
-        props: {
-            initialData: {
-                light: true
-            }
-        }
+        props: {}
     };
 }
 
