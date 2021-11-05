@@ -1,35 +1,42 @@
 import React from "react";
-import App, { AppContext } from "next/app";
+import App, { AppContext, AppProps } from "next/app";
+import { NextPageContext } from "next";
 import Head from "next/head";
 
 import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
-import { StoreProvider } from "stores/useStore";
-import { fetchInitialStoreState, RootStore } from "stores";
+import { initializeStore, StoreProvider } from "stores/useStore";
+import { RootStore } from "stores";
 import "styles/globals.scss";
 
-class MyApp extends App {
-    state = {
-        rootStore: new RootStore()
+interface CustomAppContext extends AppContext {
+    ctx: NextPageContext & {
+        store: RootStore;
     };
+}
 
-    // Fetching serialized(JSON) store state
-    static getInitialProps = async (appContext: AppContext) => {
-        // appContext.ctx.rootStore = this.state;
+class MyApp extends App {
+    mobxStore: RootStore;
+
+    static async getInitialProps(appContext: any) {
+        const mobxStore = initializeStore();
+        appContext.ctx.store = mobxStore;
         const appProps = await App.getInitialProps(appContext);
-        const initialStoreState = await fetchInitialStoreState();
 
         return {
             ...appProps,
-            initialStoreState
+            initialMobxState: mobxStore
         };
-    };
+    }
 
-    // Hydrate serialized state to store
-    static getDerivedStateFromProps = (nextProps: any, prevState: any) => {
-        prevState.rootStore.hydrate(nextProps.initialStoreState);
+    constructor(props: any) {
+        super(props);
 
-        return prevState;
-    };
+        const isServer = typeof window === "undefined";
+
+        this.mobxStore = isServer
+            ? props.initialMobxState
+            : initializeStore(props.initialMobxState);
+    }
 
     render() {
         const { Component, pageProps } = this.props;
@@ -47,7 +54,7 @@ class MyApp extends App {
                     <meta name="description" content="Оптовый магазин Саки" />
                 </Head>
 
-                <StoreProvider store={this.state.rootStore}>
+                <StoreProvider store={this.mobxStore}>
                     <Component {...pageProps} />
                 </StoreProvider>
             </ContentLayout>

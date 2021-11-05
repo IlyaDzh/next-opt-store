@@ -18,12 +18,12 @@ const Item: NextPage = () => {
     );
 };
 
-// Item.getInitialProps = async ({ store }: NextPageContext) => {
-//     console.log(store);
+Item.getInitialProps = async ({ store }: any) => {
+    console.log(store);
 
-//     return {
-//         props: {}
-//     };
-// };
+    return {
+        props: {}
+    };
+};
 
 export default Item;

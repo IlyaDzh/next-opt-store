@@ -13,12 +13,12 @@ const Payment: NextPage = () => {
     );
 };
 
-export function getStaticProps(props: any) {
-    console.log(props.initialStoreState);
+// export function getStaticProps(props: any) {
+//     console.log(props.initialStoreState);
 
-    return {
-        props: {}
-    };
-}
+//     return {
+//         props: {}
+//     };
+// }
 
 export default Payment;
