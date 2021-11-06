@@ -9,6 +9,10 @@ export class CurrentUserStore {
         address: "saki"
     };
 
+    constructor(initialData: any = {}) {
+        this.user = initialData.user;
+    }
+
     setUser = (user: IUser): void => {
         this.user = user;
     };

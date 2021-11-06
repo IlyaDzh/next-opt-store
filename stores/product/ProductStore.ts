@@ -31,4 +31,8 @@ export class ProductStore {
     setProduct = (product: IProduct) => {
         this.product = product;
     };
+
+    __data = () => ({
+        product: this.product
+    });
 }

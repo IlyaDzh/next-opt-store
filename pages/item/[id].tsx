@@ -1,11 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { CustomNextPageContext } from "pages/_app";
 
-const Item: NextPage = () => {
-    const router = useRouter();
-    const { id } = router.query;
-
+const Item: NextPage<any> = ({ id, product }) => {
     return (
         <div>
             <Head>
@@ -14,8 +11,21 @@ const Item: NextPage = () => {
             </Head>
 
             <h1>Товар {id}</h1>
+            <h2>{product.title}</h2>
+            <h3>{product.cost}</h3>
         </div>
     );
+};
+
+Item.getInitialProps = async (context: CustomNextPageContext) => {
+    const { mobxStores, query } = context;
+
+    await mobxStores.productStore.fetchProduct(query.id as string);
+
+    return {
+        id: query.id,
+        product: mobxStores.productStore.product
+    };
 };
 
 export default Item;

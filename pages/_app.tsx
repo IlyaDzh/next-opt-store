@@ -1,78 +1,73 @@
-// import React from "react";
-// import type { AppProps } from "next/app";
-// import Head from "next/head";
-
-// import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
-// import { StoreProvider } from "stores/useStore";
-// import "styles/globals.scss";
-
-// function MyApp({ Component, pageProps }: AppProps) {
-//     return (
-//         <ContentLayout>
-//             <Head>
-//                 <meta charSet="utf-8" />
-//                 <meta
-//                     name="viewport"
-//                     content="width=device-width, initial-scale=1.0"
-//                 />
-//                 <link rel="icon" href="/favicon.ico" />
-//                 <title>Оптовый магазин Саки</title>
-//                 <meta name="description" content="Оптовый магазин Саки" />
-//             </Head>
-
-//             <StoreProvider {...this.mobxStore}>
-//                 <Component {...pageProps} />
-//             </StoreProvider>
-//         </ContentLayout>
-//     );
-// }
-
-// export default MyApp;
-
-
-
-
-
-
 import React from "react";
-import App, { AppProps, Container } from "next/app";
-import { Provider } from "mobx-react";
+import App, { AppContext, AppProps } from "next/app";
+import Head from "next/head";
+import { NextPageContext } from "next";
 
-import initializeStore from "stores";
+import { ContentLayout } from "components/layout/ContentLayout/ContentLayout";
+import { StoreProvider } from "stores/useStore";
+import { getStores, IStores } from "stores";
+
+import "styles/globals.scss";
+
+export type CustomNextPageContext = NextPageContext & { mobxStores: IStores };
+
+interface CustomAppProps extends AppProps {
+    initialData: any;
+}
+
+interface CustomAppContext extends Omit<AppContext, "ctx"> {
+    ctx: CustomNextPageContext;
+}
 
 class CustomApp extends App {
-    static async getInitialProps(appContext) {
-        const mobxStore = initializeStore();
+    static getInitialProps = async (appContext: any) => {
+        // On server-side, this runs once and creates new stores
+        // On client-side, this always reuses existing stores
+        const mobxStores = getStores();
 
-        appContext.ctx.mobxStore = mobxStore;
+        // Make stores available to page's `getInitialProps`
+        appContext.ctx.mobxStores = mobxStores;
 
+        // Call "super" to run page's `getInitialProps`
         const appProps = await App.getInitialProps(appContext);
 
+        // Gather serialization-friendly data from stores
+        const initialData = {
+            productStore: mobxStores.productStore.__data()
+        };
+
+        // Send it to `render`
         return {
             ...appProps,
-            initialMobxState: mobxStore
+            initialData
         };
-    }
-
-    constructor(props: AppProps) {
-        super(props);
-
-        const isServer = typeof window === "undefined";
-
-        this.mobxStore = isServer
-            ? props.initialMobxState
-            : initializeStore(props.initialMobxState);
-    }
+    };
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, initialData } = this.props;
+
+        // During SSR, this will create new store instances so having `initialData` is crucial.
+        // During the client-side hydration, same applies.
+        // From then on, calls to `getStores()` return existing instances.
+        const stores = getStores(initialData);
 
         return (
-            <Provider {...this.mobxStore}>
-                <Container>
+            <ContentLayout>
+                <Head>
+                    <meta charSet="utf-8" />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0"
+                    />
+                    <link rel="icon" href="/favicon.ico" />
+                    <title>Оптовый магазин Саки</title>
+                    <meta name="description" content="Оптовый магазин Саки" />
+                </Head>
+
+                <StoreProvider value={stores}>
                     <Component {...pageProps} />
-                </Container>
-            </Provider>
+                </StoreProvider>
+            </ContentLayout>
         );
     }
 }

@@ -1,28 +1,38 @@
 import { enableStaticRendering } from "mobx-react-lite";
 
-import { ProductStore } from "stores/product/ProductStore";
 import { UIStore } from "stores/UIStore";
-
-const isServer = typeof window === "undefined";
+import { ProductStore } from "stores/product/ProductStore";
+import { CurrentUserStore } from "stores/user/CurrentUserStore";
+import { isServer } from "utils/isServer";
 
 enableStaticRendering(isServer);
 
-let store = null;
+export interface IStores {
+    uiStore: UIStore;
+    productStore: ProductStore;
+    currentUserStore: CurrentUserStore;
+}
 
-export default function initializeStore(initialData = { productStore: {} }) {
+let clientSideStores: IStores;
+
+export const getStores = (
+    initialData = { productStore: {}, currentUserStore: {} }
+) => {
     if (isServer) {
         return {
+            uiStore: new UIStore(),
             productStore: new ProductStore(initialData.productStore),
-            uiStore: new UIStore()
+            currentUserStore: new CurrentUserStore(initialData.currentUserStore)
         };
     }
 
-    if (store === null) {
-        store = {
+    if (!clientSideStores) {
+        clientSideStores = {
+            uiStore: new UIStore(),
             productStore: new ProductStore(initialData.productStore),
-            uiStore: new UIStore()
+            currentUserStore: new CurrentUserStore(initialData.currentUserStore)
         };
     }
 
-    return store;
-}
+    return clientSideStores;
+};
