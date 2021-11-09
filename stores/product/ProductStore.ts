@@ -1,31 +1,25 @@
-import { observable, action } from "mobx";
+import { makeAutoObservable } from "mobx";
 
-interface IProduct {
-    title: string;
-    cost: string;
-}
+import { IProduct } from "interfaces/Product";
 
 export class ProductStore {
     product: IProduct | undefined;
 
     constructor(initialData: any = {}) {
         this.product = initialData.product;
+
+        makeAutoObservable(this);
     }
 
     fetchProduct = async (id: string): Promise<void> => {
         console.log("fetch product with id:", id);
 
-        const product: IProduct = await new Promise(resolve =>
-            setTimeout(() => {
-                const item = {
-                    title: "AirPods 2",
-                    cost: "2000"
-                };
-                resolve(item);
-            }, 1000)
-        );
+        try {
+            const product = await fetch(`http://localhost:3000/api/product/${id}`);
+            const data = await product.json();
 
-        this.setProduct(product);
+            this.setProduct(data);
+        } catch {}
     };
 
     setProduct = (product: IProduct) => {
